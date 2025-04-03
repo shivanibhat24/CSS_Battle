@@ -3,56 +3,68 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Geometric Design</title>
+    <title>Diamond and Parallelogram Design</title>
     <style>
         body {
             margin: 0;
             padding: 0;
-            background-color: #000;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
+            background-color: #000;
             overflow: hidden;
         }
+
         .container {
             position: relative;
-            width: 300px;
-            height: 200px;
+            width: 400px;
+            height: 400px;
         }
-        .shape {
+
+        /* Base parallelograms for the bottom */
+        .parallelogram {
             position: absolute;
-            width: 200px;
-            height: 200px;
-            clip-path: polygon(30% 0%, 70% 0%, 100% 100%, 0% 100%);
-            background: linear-gradient(135deg, #ff9800, #ffca28);
-            opacity: 0.9;
+            width: 220px;
+            height: 120px;
+            background: linear-gradient(45deg, #ff8c00, #ffa500); /* Orange gradient */
+            transform: skew(20deg); /* Create parallelogram by skewing */
+            opacity: 0.8; /* Slight transparency for overlap */
         }
-        /* Bottom left rhombus (base aligned) */
-        .shape-1 {
-            bottom: 0;
-            left: 20px;
-            transform: rotate(-30deg);
+
+        /* Left parallelogram */
+        .left {
+            top: 200px;
+            left: 90px;
         }
-        /* Bottom right rhombus (base aligned with shape-1) */
-        .shape-2 {
-            bottom: 0;
-            right: 20px;
-            transform: rotate(30deg);
+
+        /* Right parallelogram */
+        .right {
+            top: 200px;
+            left: 170px;
+            transform: skew(-20deg); /* Opposite skew for symmetry */
         }
-        /* Central rhombus (overlapping) */
-        .shape-3 {
-            top: 30px;
-            left: 50px;
-            transform: rotate(0deg);
+
+        /* Top diamond */
+        .diamond {
+            position: absolute;
+            width: 140px;
+            height: 140px;
+            background: linear-gradient(45deg, #ff8c00, #ffa500);
+            transform: rotate(45deg); /* Create diamond by rotating */
+            clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%); /* Ensure diamond shape */
+            opacity: 0.8;
+            top: 100px;
+            left: 130px;
+            z-index: 1; /* Ensure it appears above */
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="shape shape-1"></div>
-        <div class="shape shape-2"></div>
-        <div class="shape shape-3"></div>
+        <div class="parallelogram left"></div>
+        <div class="parallelogram right"></div>
+        <div class="diamond"></div>
     </div>
 </body>
 </html>
